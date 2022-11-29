@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{ item.name }}
+{% endblock %}
+
+{% block content %}
+<main class="px-3">
+<div class="container">
+<div class="row row-cols-3 row-cols-md-1 mb-3 text-center">
+<div class="col">
+<div class="card mb-4 rounded-3 shadow-sm">
+	<div class="card-header py-3">
+		<h1 class="my-0 fw-normal">{{ item.name }}</h1>
+	</div>
+	<div class="card-body">
+	<h2>Описание</h2>
+	<p>{{ item.description }}</p>
+
+	<button name="buy-button" class="w-100 btn btn-lg btn-outline-primary" onclick="buy('{{ item.id }}')">${{ item.price }}</button>
+	</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}

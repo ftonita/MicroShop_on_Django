@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+  <head>
+	<title>{% block title %}{% endblock %}</title>
+    <style>
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://getbootstrap.com/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <meta name="theme-color" content="#712cf9">
+  </head>
+<body class="d-flex h-150 text-center text-bg-light">
+<div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0"><a class="nav-link py-1 px-0 active" href="{% url 'index' %}">Home</a></h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <h3><a class="nav-link py-1 px-0 active" aria-current="page" href="{% url 'about' %}">About</a></h3>
+      </nav>
+    </div>
+  </header>
+  {% block content %}
+  {% endblock %}
+	</div>
+  </main>
+</div>
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+  async function buy(idx){
+    var stripe = Stripe('pk_test_a9nwZVa5O7b0xz3lxl318KSU00x1L9ZWsF');
+    fetch(`/buy/${idx}`, {method: 'GET'})
+      .then((response) => response.json())
+      .then((response) => window.location.replace(response.redirect_url))
+  }
+  </script>
+  </body>
+  </html>
+  
+  

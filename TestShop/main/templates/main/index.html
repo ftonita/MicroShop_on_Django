@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+
+{% if success %}
+
+<div class="b-container">
+  Sample Text
+</div>
+<div class="b-popup">
+  <div class="b-popup-content">
+      Text in Popup
+  </div>
+</div>
+
+{% endif %}
+
+
+<main class="px-3">
+  <div class="container">
+<header class="mb-auto">
+  <h2 class="title ng-repeat">Главная страница</h2>
+</header>
+<h3 class="title" style="text-align: left;">Item Shop</h3>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+  {% for item in items %}
+
+  <div class="col">
+  <div class="card mb-4 rounded-3 shadow-sm">
+    <div class="card-header py-3">
+    <h4 class="my-0 fw-normal"><a href="/item/{{ item.id }}">{{ item.name }}</a></h4>
+    </div>
+    <div class="card-body">
+    <p>{{ item.description }}</p>
+    <button name="buy-button" class="w-100 btn btn-lg btn-outline-primary" onclick="buy('{{ item.id }}')">${{ item.price }}</button>
+    </div>
+  </div>
+  </div>
+
+  {% endfor %}
+</div>
+</div>
+</main>
+
+{% endblock %}
