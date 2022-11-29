@@ -1,7 +1,11 @@
-all: build run
-	
-build:
-	docker build -t testshop .
+SRC = TestShop/manage.py
 
-run:
-	docker run -it --rm --name testshopapp -p 8000:8000 testshop
+TARGET = runserver
+
+all: imports
+	@python3 $(SRC) $(TARGET)
+	
+imports:
+	@pip install --no-cache-dir -r requirements.txt
+	@pip install --no-cache-dir -r requirements.txt
+	@echo "Modules have been imported"
